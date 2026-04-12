@@ -1,0 +1,5 @@
+main_lambda_package_file    = "/absolute/path/to/meaning-mesh-main-service.zip"
+fetcher_lambda_package_file = "/absolute/path/to/meaning-mesh-url-fetcher.zip"
+categorizer_image           = "123456789012.dkr.ecr.us-east-1.amazonaws.com/meaning-mesh-url-categorizer:stage"
+subnet_ids                  = ["subnet-1234567890abcdef0", "subnet-abcdef01234567890"]
+security_group_ids          = ["sg-1234567890abcdef0"]
