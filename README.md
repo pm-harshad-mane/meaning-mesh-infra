@@ -41,3 +41,28 @@ Each environment expects deployment artifacts to be provided explicitly:
 - VPC subnet IDs and security group IDs for ECS
 
 Review `terraform.tfvars.example` in the target environment before planning.
+
+## Dev Deployment Flow
+
+Prerequisites:
+
+- Docker with `buildx`
+- AWS CLI authenticated to the target account
+- Terraform 1.6+
+
+Build deployable artifacts:
+
+```bash
+./scripts/build_dev_artifacts.sh <categorizer-ecr-image-uri>
+```
+
+Apply the `dev` environment:
+
+```bash
+./scripts/deploy_dev.sh \
+  /absolute/path/to/meaning-mesh-main-service/dist/lambda.zip \
+  /absolute/path/to/meaning-mesh-url-fetcher/dist/lambda.zip \
+  <categorizer-ecr-image-uri> \
+  subnet-abc123,subnet-def456 \
+  sg-abc123
+```
