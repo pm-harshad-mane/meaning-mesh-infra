@@ -29,3 +29,8 @@ variable "subnet_ids" {
 variable "security_group_ids" {
   type = list(string)
 }
+
+variable "assign_public_ip" {
+  type    = bool
+  default = false
+}

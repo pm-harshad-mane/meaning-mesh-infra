@@ -23,7 +23,6 @@ module "lambda_main" {
   role_arn     = module.iam.main_lambda_role_arn
   package_file = var.main_lambda_package_file
   environment_variables = {
-    AWS_REGION               = var.aws_region
     URL_CATEGORIZATION_TABLE = module.dynamodb.url_categorization_table_name
     URL_WIP_TABLE            = module.dynamodb.url_wip_table_name
     URL_FETCHER_QUEUE_URL    = module.sqs.fetch_queue_url
@@ -41,7 +40,6 @@ module "lambda_fetcher" {
   package_file    = var.fetcher_lambda_package_file
   fetch_queue_arn = module.sqs.fetch_queue_arn
   environment_variables = {
-    AWS_REGION                = var.aws_region
     URL_CATEGORIZATION_TABLE  = module.dynamodb.url_categorization_table_name
     URL_WIP_TABLE             = module.dynamodb.url_wip_table_name
     URL_CATEGORIZER_QUEUE_URL = module.sqs.categorizer_queue_url
