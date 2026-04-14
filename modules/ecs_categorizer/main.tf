@@ -11,8 +11,8 @@ resource "aws_ecs_task_definition" "this" {
   family                   = "meaning-mesh-categorizer-${var.environment}"
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
-  cpu                      = "4096"
-  memory                   = "8192"
+  cpu                      = "16384"
+  memory                   = "32768"
   execution_role_arn       = var.execution_role_arn
   task_role_arn            = var.task_role_arn
 

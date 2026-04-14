@@ -66,3 +66,17 @@ Apply the `dev` environment:
   subnet-abc123,subnet-def456 \
   sg-abc123
 ```
+
+Report timing breakdowns for URLs that have already been processed:
+
+```bash
+./scripts/report_url_timings.py \
+  "https://thehockeynews.com/nhl/boston-bruins/latest-news/bruins-linked-to-potential-summer-trade-for-rangers-star?probe=16384-20260414-a" \
+  "https://versus.com/en/samsung-galaxy-a55-5g-vs-samsung-galaxy-a73-5g?probe=16384-20260414-a"
+```
+
+Notes:
+
+- Categorizer timings come directly from DynamoDB.
+- Main-service and fetcher timings are reconstructed from CloudWatch logs.
+- The script matches pre-categorizer events by chronological alignment, so it is most reliable when you benchmark a small set of URLs together.
