@@ -62,7 +62,7 @@ variable "task_cpu" {
 
 variable "task_memory" {
   type    = number
-  default = 32768
+  default = 16384
 }
 
 variable "service_desired_count" {
