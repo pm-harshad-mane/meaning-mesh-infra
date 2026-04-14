@@ -9,7 +9,7 @@ Included modules:
 - SQS queues and DLQs
 - Main Lambda
 - Fetcher Lambda
-- ECS categorizer service skeleton
+- ECS categorizer service on ECS with EC2 Auto Scaling capacity
 - IAM roles and least-privilege policies
 - CloudWatch monitoring skeleton
 
@@ -39,6 +39,11 @@ Each environment expects deployment artifacts to be provided explicitly:
 - `fetcher_lambda_package_file`
 - `categorizer_image`
 - VPC subnet IDs and security group IDs for ECS
+
+The categorizer module provisions ECS container instances in an Auto Scaling
+group and runs the worker service on EC2 capacity instead of Fargate. The
+default instance type is `m7g.4xlarge`, which is sized to run one
+`16 vCPU / 32 GB` categorizer task per instance with headroom for the host.
 
 Review `terraform.tfvars.example` in the target environment before planning.
 

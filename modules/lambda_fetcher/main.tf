@@ -5,6 +5,7 @@ resource "aws_lambda_function" "this" {
   handler          = "app.handler.lambda_handler"
   filename         = var.package_file
   timeout          = 15
+  memory_size      = 512
   source_code_hash = filebase64sha256(var.package_file)
   architectures    = ["arm64"]
 
